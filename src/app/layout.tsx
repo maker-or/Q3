@@ -1,5 +1,11 @@
 import "~/styles/globals.css";
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
@@ -15,24 +21,16 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider>
-
-
       <html lang="en" className={`${GeistSans.variable}`}>
-
         <body>
           <SignedOut>
-            <div className="scroll-behavior: auto; flex h-screen w-screen flex-col items-center justify-center bg-[#0c0c0c]">
+            <div className="scroll-behavior: auto; flex h-screen w-screen flex-col items-center justify-center bg-[#0c0c0c] text-white">
               <SignInButton />
             </div>
           </SignedOut>
-          <SignedIn>
-            {children}
-          </SignedIn>
-
-
+          <SignedIn>{children}</SignedIn>
         </body>
       </html>
-       </ClerkProvider>
-
-      );
+    </ClerkProvider>
+  );
 }
